@@ -20,15 +20,15 @@ $ python3 cost.py
   ║     Dario doesn't know he's paying.      ║
   ╚══════════════════════════════════════════╝
 
-  06-01 Mon $  331.27 █████████
-  06-02 Tue $  284.16 ████████
-  06-03 Wed $  371.38 ███████████
+  06-01 Mon $  110.42 █████████
+  06-02 Tue $   94.72 ████████
+  06-03 Wed $  123.66 ███████████
   ...
 
-  Total API cost:   $5,931.48
+  Total API cost:   $1,986.74
   You paid:         -$20.00 (Pro)
   ═════════════════════════════════════════
-  Net value:        $5,911.48
+  Net value:        $1,966.74
 ```
 
 **Options:**
@@ -65,6 +65,19 @@ $ python3 efficiency.py
 - Effective content ratio (useful text vs. wrapper JSON)
 - Daily breakdown of tool call distribution
 
+### `compaction.py` — Context Compaction Tracker
+
+Tracks Claude Code's auto-compaction events — when context gets too large and gets summarized.
+
+```
+$ python3 compaction.py
+
+  Compaction Report
+  Total compactions:  15
+  Total time spent:   24m
+  Estimated cost:     $10.50
+```
+
 ## How It Works
 
 Claude Code stores session transcripts as JSONL files in `~/.claude/projects/`. Each assistant response includes a `usage` field with token counts:
@@ -89,10 +102,14 @@ The cost calculator applies the published API pricing to these token counts. Sin
 
 | Model | Input | Output | Cache Read | Cache Write |
 |-------|-------|--------|------------|-------------|
-| Opus | $15/M | $75/M | $1.50/M | $18.75/M |
-| Sonnet | $3/M | $15/M | $0.30/M | $3.75/M |
-| Haiku | $0.80/M | $4/M | $0.08/M | $1.00/M |
-| Fable | $30/M | $150/M | $3/M | $37.50/M |
+| Fable 5 | $10/M | $50/M | $1.00/M | $12.50/M |
+| Opus 4.5–4.8 | $5/M | $25/M | $0.50/M | $6.25/M |
+| Sonnet 4.5–4.6 | $3/M | $15/M | $0.30/M | $3.75/M |
+| Haiku 4.5 | $1/M | $5/M | $0.10/M | $1.25/M |
+
+> **The Dario Touch Threshold™**: cache_write / cache_read = 12.5× for *every* model.
+> At the 5-minute cache TTL, break-even is always **62 minutes** — a universal constant
+> independent of which model you're touching. Dario doesn't know he's being touched.
 
 ## Requirements
 

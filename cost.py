@@ -18,28 +18,28 @@ from pathlib import Path
 # Pricing per 1M tokens (USD) — https://docs.anthropic.com/en/docs/about-claude/models
 MODEL_PRICING = {
     "opus": {
-        "input": 15.0,
-        "output": 75.0,
-        "cache_read": 1.5,
-        "cache_create": 18.75,
+        "input": 5.0,
+        "output": 25.0,
+        "cache_read": 0.50,
+        "cache_create": 6.25,
     },
     "sonnet": {
         "input": 3.0,
         "output": 15.0,
-        "cache_read": 0.3,
+        "cache_read": 0.30,
         "cache_create": 3.75,
     },
     "haiku": {
-        "input": 0.80,
-        "output": 4.0,
-        "cache_read": 0.08,
-        "cache_create": 1.0,
+        "input": 1.0,
+        "output": 5.0,
+        "cache_read": 0.10,
+        "cache_create": 1.25,
     },
     "fable": {
-        "input": 30.0,
-        "output": 150.0,
-        "cache_read": 3.0,
-        "cache_create": 37.5,
+        "input": 10.0,
+        "output": 50.0,
+        "cache_read": 1.0,
+        "cache_create": 12.50,
     },
 }
 

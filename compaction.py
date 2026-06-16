@@ -20,10 +20,10 @@ DEFAULT_SESSION_DIR = os.path.expanduser("~/.claude/projects")
 
 # Pricing per 1M tokens (USD)
 MODEL_PRICING = {
-    "opus": {"input": 15.0, "output": 75.0},
+    "opus": {"input": 5.0, "output": 25.0},
     "sonnet": {"input": 3.0, "output": 15.0},
-    "haiku": {"input": 0.80, "output": 4.0},
-    "fable": {"input": 30.0, "output": 150.0},
+    "haiku": {"input": 1.0, "output": 5.0},
+    "fable": {"input": 10.0, "output": 50.0},
 }
 
 SUMMARY_RATIO = 0.05  # summary output is roughly 5% of input tokens
